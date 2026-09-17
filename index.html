@@ -18,7 +18,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Folha de Estilos CSS Puro -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
@@ -853,9 +853,36 @@
       <div class="rodape-identificacao">
         <span class="rodape-autor">© 2026 Antony Alves — Desenvolvedor Back-End</span>
         <span class="rodape-stack-info">
-          Construído com HTML5, CSS3 e JavaScript
+          Construído com HTML5, CSS3 e JavaScript Puro (Sem TypeScript)
         </span>
       </div>
+
+      <!-- Empresa Patrocinadora do Programa: Alura Include -->
+      <div class="rodape-patrocinador" id="bloco-patrocinador-programa">
+        <div class="rodape-patrocinador-texto">
+          <span class="rodape-patrocinador-rotulo">
+            <span class="rodape-pulso-ativo" aria-hidden="true"></span>
+            Empresa Patrocinadora do Programa
+          </span>
+          <span class="rodape-patrocinador-subtitulo">Capacitação e Inclusão em Tecnologia</span>
+        </div>
+        <a href="https://www.alura.com.br" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="rodape-patrocinador-link"
+           id="link-patrocinador-alura"
+           title="Alura Include — Empresa Patrocinadora do Programa"
+           aria-label="Alura Include - Empresa Patrocinadora do Programa">
+          <img src="/images/logo-alura-include.svg" 
+               alt="Logo Alura Include — Empresa Patrocinadora do Programa" 
+               class="rodape-patrocinador-logo" 
+               id="logo-empresa-patrocinadora"
+               width="132" 
+               height="60"
+               loading="lazy">
+        </a>
+      </div>
+
       <!-- Links Sociais no Rodapé -->
       <div class="rodape-links-sociais" id="links-rodape">
         <button type="button" class="btn-cv btn-abrir-cv" style="font-size: 0.8rem; padding: 0.4rem 0.75rem;" title="Visualizar e Baixar Currículo">
@@ -1183,6 +1210,6 @@
   <!-- ==================================================================== -->
   <!-- 6. ARQUIVO JAVASCRIPT PURO                                           -->
   <!-- ==================================================================== -->
-  <script src="script.js" defer></script>
+  <script src="/script.js" defer></script>
 </body>
 </html>
