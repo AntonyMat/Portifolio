@@ -2117,34 +2117,69 @@ button.contato-link-item:hover {
 
 /* Otimização especial para Recrutadores Imprimirem o CV em PDF */
 @media print {
-  body * {
-    visibility: hidden;
+  /* 1. Remove TODO o conteúdo do site do fluxo da página, deixando APENAS o modal do CV */
+  body > *:not(#modal-cv) {
+    display: none !important;
   }
-  #modal-cv, #modal-cv * {
-    visibility: visible;
+
+  /* 2. Reseta o tamanho do html e body, anulando o min-height: 100vh original */
+  html, body {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    margin: 0;
+    padding: 0;
+    background: #ffffff !important;
   }
+
+  /* 3. Transforma o modal em um bloco estático (como uma página normal) */
   #modal-cv {
-    position: absolute;
+    display: block !important;
+    position: relative !important;
     left: 0;
     top: 0;
     width: 100%;
+    height: auto !important;
     background: #ffffff !important;
+    overflow: visible !important;
     padding: 0;
   }
+
+  /* 4. Remove sombras e restrições da janela interna do CV */
   .modal-janela-cv {
-    border: none;
-    box-shadow: none;
-    max-width: 100%;
+    border: none !important;
+    box-shadow: none !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
     background: #ffffff !important;
   }
-  .modal-cabecalho, .modal-rodape {
+
+  /* 5. Esconde os botões e cabeçalhos do modal */
+  .modal-cabecalho, 
+  .modal-rodape,
+  .btn-fechar-modal,
+  .btn-fechar-modal-acao,
+  #btn-imprimir-cv {
     display: none !important;
   }
+
+  /* 6. Evita que itens do currículo sejam cortados pela metade */
+  .cv-secao-titulo {
+    page-break-after: avoid;
+  }
+  .cv-item {
+    page-break-inside: avoid;
+  }
+
+  /* 7. Cores otimizadas para o papel */
   .cv-documento {
     background: #ffffff !important;
     color: #111827 !important;
-    border: none;
-    padding: 0;
+    border: none !important;
+    padding: 0 !important;
   }
   .cv-nome {
     color: #111827 !important;
@@ -2163,5 +2198,9 @@ button.contato-link-item:hover {
   }
   .cv-cabecalho-doc {
     border-bottom: 2px solid #059669 !important;
+  }
+  
+  .modal-overlay {
+    background: transparent !important;
   }
 }
