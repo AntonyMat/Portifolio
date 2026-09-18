@@ -1,17 +1,3 @@
-/**
- * ==============================================================================
- * PORTFÓLIO DE DESENVOLVEDOR BACK-END — JAVASCRIPT PURO (VANILLA JS)
- * Autor: Antony Alves
- * 
- * OBJETIVO DIDÁTICO:
- * Lógica pura e simplificada sem frameworks complexos, focada em:
- * 1. Manipulação direta do DOM
- * 2. Simulação de console e eventos de servidor Back-End (HTTP, SQL, REST)
- * 3. Modal didático de código-fonte comentado para entrevistas técnicas
- * 4. Modal interativo de Currículo (CV) pronto para visualização e impressão PDF
- * ==============================================================================
- */
-
 document.addEventListener('DOMContentLoaded', () => {
   console.log('[PORTFÓLIO BACK-END] Aplicação carregada com sucesso em JavaScript puro.');
 
