@@ -1255,20 +1255,33 @@ button.contato-link-item:hover {
 /* --------------------------------------------------------------------------
    10. MODAIS (CÓDIGO DIDÁTICO E VISUALIZADOR DE CURRÍCULO CV)
    -------------------------------------------------------------------------- */
+/* Esconde todos os modais por padrão */
 .modal-overlay {
-  display: none;
+  display: none; /* ou visibility: hidden; opacity: 0; */
   position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(8px);
-  z-index: 999;
-  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro */
+  z-index: 9999;
   justify-content: center;
-  padding: 1.5rem;
+  align-items: center;
 }
 
+/* Mostra o modal quando o JavaScript injeta a classe .ativo */
 .modal-overlay.ativo {
+  display: flex; /* ou visibility: visible; opacity: 1; */
+}
+
+/* Esconde a gaveta do menu mobile por padrão e mostra quando ativa */
+.menu-mobile {
+  display: none;
+}
+
+.menu-mobile.ativo {
   display: flex;
+  flex-direction: column;
 }
 
 .modal-janela {
