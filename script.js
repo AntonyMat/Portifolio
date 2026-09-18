@@ -614,7 +614,8 @@ public class RedacaoService {
         setTimeout(() => {
           feedbackEnvio.classList.remove('visivel');
         }, 5000);
-      }, 500);
+      }, 500);git 
+      
     });
   }
 });
