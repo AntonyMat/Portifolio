@@ -593,8 +593,8 @@ public class RedacaoService {
   const feedbackEnvio = document.getElementById('feedback-envio');
 
   if (formContato && feedbackEnvio) {
-    formContato.addEventListener('submit', (evento) => {
-      evento.preventDefault();
+    formContato.addEventListener('submit', async (evento) => {
+      evento.preventDefault(); // Impede o recarregamento da página
 
       const btnSubmit = formContato.querySelector('button[type="submit"]');
       if (btnSubmit) {
@@ -602,20 +602,44 @@ public class RedacaoService {
         btnSubmit.disabled = true;
       }
 
-      setTimeout(() => {
+      try {
+        // Envia os dados para o Formspree
+        const resposta = await fetch(formContato.action, {
+          method: formContato.method,
+          body: new FormData(formContato),
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (resposta.ok) {
+          // Sucesso
+          feedbackEnvio.textContent = '✓ Mensagem enviada com sucesso! Em breve entrarei em contato. Obrigado!';
+          feedbackEnvio.style.color = 'var(--cor-destaque)';
+          feedbackEnvio.style.borderColor = 'var(--cor-destaque)';
+          feedbackEnvio.classList.add('visivel');
+          formContato.reset();
+        } else {
+          // Erro no Formspree
+          throw new Error('Falha na resposta do servidor.');
+        }
+      } catch (erro) {
+        // Erro de rede ou servidor
+        feedbackEnvio.textContent = '⚠ Ocorreu um erro ao enviar a mensagem. Tente novamente mais tarde.';
+        feedbackEnvio.style.color = '#ef4444'; // Vermelho de erro
+        feedbackEnvio.style.borderColor = '#ef4444';
+        feedbackEnvio.classList.add('visivel');
+      } finally {
+        // Restaura o botão e esconde o feedback após 5 segundos
         if (btnSubmit) {
           btnSubmit.textContent = 'Enviar Mensagem';
           btnSubmit.disabled = false;
         }
 
-        feedbackEnvio.classList.add('visivel');
-        formContato.reset();
-
         setTimeout(() => {
           feedbackEnvio.classList.remove('visivel');
         }, 5000);
-      }, 500);
-      
+      }
     });
   }
 });
