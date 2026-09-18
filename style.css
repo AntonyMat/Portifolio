@@ -1958,7 +1958,18 @@ button.contato-link-item:hover {
   }
 }
 
+/* ==========================================================================
+   ATUALIZAÇÕES DE RESPONSIVIDADE PARA CELULAR
+   ========================================================================== */
+
 @media (max-width: 768px) {
+  /* 1. CABEÇALHO: Esconde os botões soltos no header e mantém só o Logo e o Menu Hambúrguer */
+  .nav-acoes-direita .btn-cv,
+  .nav-acoes-direita .btn-social,
+  .nav-acoes-direita .btn-primario {
+    display: none !important; 
+  }
+
   .menu-desktop {
     display: none;
   }
@@ -1966,30 +1977,64 @@ button.contato-link-item:hover {
   .btn-menu-hamburguer {
     display: block;
   }
-  
-  .hero-titulo {
-    font-size: 2.2rem;
+
+  /* 2. ESPAÇAMENTOS: Reduz os paddings gigantes das seções no celular */
+  .secao-hero,
+  .secao-sobre,
+  .secao-habilidades,
+  .secao-projetos,
+  .secao-contato {
+    padding: 3.5rem 0 !important;
   }
-  
-  .hero-cards-metricas {
-    grid-template-columns: 1fr;
+
+  /* 3. TIPOGRAFIA: Reduz os tamanhos das fontes principais */
+  .hero-titulo {
+    font-size: 2rem;
   }
   
   .titulo-secao {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
-  
+
+  /* 4. HERO SECÃO: Ajusta os botões sociais para ocuparem 100% da largura (melhor para toque) */
   .hero-redes-recrutador {
     flex-direction: column;
+    align-items: stretch; /* Estica os botões lateralmente */
+    width: 100%;
+  }
+
+  .hero-redes-recrutador .btn-social, 
+  .hero-redes-recrutador .btn-email {
+    justify-content: center;
+  }
+
+  /* 5. CONTATO: Evita que o e-mail ou o texto de disponibilidade vaze da tela */
+  .contato-links-lista .contato-link-item {
+    flex-direction: column;
     align-items: flex-start;
+    gap: 0.5rem;
+    text-align: left;
+  }
+}
+
+/* Ajustes extras para telas muito pequenas (smartphones menores) */
+@media (max-width: 480px) {
+  .hero-titulo {
+    font-size: 1.75rem;
   }
   
-  .cv-documento {
-    padding: 1.25rem;
+  .logo-dev {
+    font-size: 0.95rem;
   }
   
-  .cv-nome {
-    font-size: 1.5rem;
+  .logo-icone {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  .btn-primario, .btn-secundario, .btn-cv {
+    width: 100%;
+    justify-content: center;
   }
 }
 
