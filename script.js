@@ -419,7 +419,7 @@ public class RedacaoService {
       });
     }
 
-    modalProjeto.classList.add('ativo');
+    abrirModalUnico(modalProjeto);
   }
 
   // 1. Clique na janela do projeto (card compacto inteiro abre o prompt)
@@ -467,12 +467,22 @@ public class RedacaoService {
   const botoesAbrirCv = document.querySelectorAll('.btn-abrir-cv');
   const btnImprimirCv = document.getElementById('btn-imprimir-cv');
 
+  function abrirModalUnico(modal) {
+    [modalProjeto, modalCv, modalEmail].forEach((modalAtivo) => {
+      if (modalAtivo && modalAtivo !== modal) {
+        modalAtivo.classList.remove('ativo');
+      }
+    });
+
+    if (modal) {
+      modal.classList.add('ativo');
+    }
+  }
+
   // Abre o modal de currículo ao clicar em qualquer botão com a classe .btn-abrir-cv
   botoesAbrirCv.forEach((botao) => {
     botao.addEventListener('click', () => {
-      if (modalCv) {
-        modalCv.classList.add('ativo');
-      }
+      abrirModalUnico(modalCv);
     });
   });
 
@@ -498,7 +508,7 @@ public class RedacaoService {
       evento.preventDefault();
       if (modalEmail) {
         if (feedbackCopiaEmail) feedbackCopiaEmail.classList.remove('visivel');
-        modalEmail.classList.add('ativo');
+        abrirModalUnico(modalEmail);
       }
     });
   });
